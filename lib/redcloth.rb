@@ -19,6 +19,7 @@ require 'redcloth/textile_doc'
 require 'redcloth/formatters/base'
 require 'redcloth/formatters/html'
 require 'redcloth/formatters/latex'
+require 'redcloth/formatters/plain'
 
 module RedCloth
   

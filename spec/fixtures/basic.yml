@@ -8,20 +8,28 @@ in: |-
 html: |-
   <p>A single paragraph.</p>
   <p>Followed by another.</p>
+plain: |-
+  A single paragraph.
+
+  Followed by another.
 ---
 name: blocks with spaces on the blank line in between
 in: "This is line one\n \nThis is line two"
 html: "<p>This is line one</p>\n<p>This is line two</p>"
+plain: "This is line one\n\nThis is line two"
 ---
-name: blocks with tabl on the blank line in between
+name: blocks with tabs on the blank line in between
 in: "This is line one\n\t\nThis is line two"
 html: "<p>This is line one</p>\n<p>This is line two</p>"
+plain: "This is line one\n\nThis is line two"
 ---
 name: block containing block start
 in: |-
   I saw a ship. It ate my elephant.
 html: |-
   <p>I saw a ship. It ate my elephant.</p>
+plain: |-
+  I saw a ship. It ate my elephant.
 ---
 name: extended block containing block start
 in: |-
@@ -31,6 +39,10 @@ in: |-
 html: |-
   <p>I saw a ship. It ate my elephant.</p>
   <p>When the elephant comes to take a p. you&#8230;</p>
+plain: |-
+  I saw a ship. It ate my elephant.
+  
+  When the elephant comes to take a p. you...
 ---
 name: blockquote containing block start
 in: |-
@@ -74,6 +86,8 @@ in: |-
   notextile. I saw a ship. It ate my elephant.
 html: |-
   I saw a ship. It ate my elephant.
+plain: |-
+  I saw a ship. It ate my elephant.
 valid_html: false
 ---
 name: extended notextile block containing block start
@@ -92,6 +106,8 @@ in: |-
   pre. I saw a ship. It ate my elephant.
 html: |-
   <pre>I saw a ship. It ate my elephant.</pre>
+plain: |-
+  I saw a ship. It ate my elephant.
 ---
 name: extended pre block containing block start
 in: |-
@@ -101,6 +117,10 @@ in: |-
 html: |-
   <pre>I saw a ship. It ate my elephant.</pre>
   <pre>When the elephant comes to take a p. you...</pre>
+plain: |-
+  I saw a ship. It ate my elephant.
+
+  When the elephant comes to take a p. you...
 --- 
 name: html tags
 desc: You can certainly use HTML tags inside your Textile documents.  HTML will only be escaped if it&#8217;s found in a <code>pre</code> or <code>code</code> block.
@@ -129,6 +149,9 @@ html_no_breaks: |-
   And none replied.</p>
 lite_mode_html: |-
   I spoke.<br />
+  And none replied.
+plain: |-
+  I spoke.
   And none replied.
 --- 
 name: curly quotes
@@ -185,6 +208,7 @@ desc: Triplets of periods become an ellipsis.
 in: Observe...
 html: <p>Observe&#8230;</p>
 lite_mode_html: Observe&#8230;
+plain: Observe...
 --- 
 name: dimension sign
 desc: The letter 'x' becomes a dimension sign when used between digits.
@@ -223,11 +247,13 @@ desc: Conversion of trademark and copyright symbols.
 in: one(TM), two(R), three(C).
 html: <p>one&#8482;, two&#174;, three&#169;.</p>
 lite_mode_html: one&#8482;, two&#174;, three&#169;.
+plain: one(TM), two(R), three(C).
 --- 
 name: headers
 desc: To make an entire paragraph into a Header, place “h<em>n</em>.” at its beginning, where <em>n</em> is a number from 1-6.
 in: h3. Header 3
 html: <h3>Header 3</h3>
+plain: Header 3
 --- 
 name: blockquote
 desc: To make an entire paragraph into a block quotation, place “bq.” before it.
@@ -243,6 +269,12 @@ html: |-
   <p>A block quotation.</p>
   </blockquote>
   <p>Any old text</p>
+plain: |-
+  Any old text
+
+  A block quotation.
+
+  Any old text
 --- 
 name: footnote reference
 desc: Numeric references within text to footnotes appear between square brackets.
@@ -259,17 +291,20 @@ desc: Emphasis to text is added by surrounding a phrase with underscores.  In HT
 in: I _believe_ every word.
 html: <p>I <em>believe</em> every word.</p>
 lite_mode_html: "I <em>believe</em> every word."
+plain: I believe every word.
 --- 
 name: strong
 desc: Strength can be give to text by surrounding with asterisks.  In HTML, this strength appears as <strong>bold</strong>.
 in: And then? She *fell*!
 html: <p>And then? She <strong>fell</strong>!</p>
 lite_mode_html: "And then? She <strong>fell</strong>!"
+plain: And then? She fell!
 ---
 name: strong phrase beginning with a number
 desc: A strong phrase at the beginning of a line that begins with a number should not be recognized as a ul with a start value (no such thing)
 in: "*10 times as many*"
 html: "<p><strong>10 times as many</strong></p>"
+plain: 10 times as many
 --- 
 name: force bold italics
 desc: Both italics and bold can be forced by doubling the underscores or asterisks.
@@ -279,17 +314,22 @@ in: |-
 html: |-
   <p>I <i>know</i>.<br />
   I <b>really</b> <i>know</i>.</p>
+plain: |-
+  I know.
+  I really know.
 --- 
 name: citation
 desc: Use double question marks to indicate <em>citation</em>.  The title of a book, for instance.
 in: ??Cat's Cradle?? by Vonnegut
 html: <p><cite>Cat&#8217;s Cradle</cite> by Vonnegut</p>
+plain: Cat's Cradle by Vonnegut
 --- 
 name: code phrases
 desc: Code phrases can be surrounded by at-symbols.
 in: Convert with @r.to_html@
 html: <p>Convert with <code>r.to_html</code></p>
 lite_mode_html: Convert with <code>r.to_html</code>
+plain: Convert with r.to_html
 ---
 name: code phrases not created with multiple email addresses
 in: Please email why@domain.com or jason@domain.com.
@@ -336,6 +376,7 @@ name: span
 desc: Lastly, if you find yourself needing to customize the style of a passage, use percent symbols to translate the passage as an HTML span.
 in: I'm %unaware% of most soft drinks.
 html: <p>I&#8217;m <span>unaware</span> of most soft drinks.</p>
+plain: I'm unaware of most soft drinks.
 --- 
 name: style span
 desc: This way, you can apply style settings, as described in the next section to arbitrary phrases.
@@ -357,6 +398,9 @@ in: |-
 html: |-
   <p>http://blah.com/one%20two%20three<br />
   (min)5%-95%(max)</p>
+plain: |-
+  http://blah.com/one%20two%20three
+  (min)5%-95%(max)
 --- 
 name: css class
 desc: A block can be tagged with a CSS class by circling the class in parentheses and placing it just before the period which marks the block.

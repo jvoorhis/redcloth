@@ -93,6 +93,18 @@ module RedCloth
       to(RedCloth::Formatters::LATEX)
     end
 
+    #
+    # Generates plain text from Textile contents.
+    #
+    #   RedCloth.new( "And then? She *fell*!" ).to_plain
+    #     #=> "And then? She fell!"
+    #
+    def to_plain( *rules )
+      apply_rules(rules)
+
+      to(RedCloth::Formatters::Plain)
+    end
+
     private
     def apply_rules(rules)
       rules.each do |r|
